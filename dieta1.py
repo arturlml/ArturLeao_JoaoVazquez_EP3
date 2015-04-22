@@ -3,7 +3,6 @@ def TMB():
     altura = 164
     idade = 30    
     return 88.36+(13.4*peso)+(4.8*altura)-(5.7*idade)
-
 #print(TMB())  #Nível basal do metabolismo
 
 def qtdecalorica():  #quantidade energetica em kcal necessitada 
@@ -11,7 +10,7 @@ def qtdecalorica():  #quantidade energetica em kcal necessitada
 print(qtdecalorica())  #só para saber qual a necessidade energetica, que é de 2833.416kcal
         
 
-''' Criando um dicionário com as informaões do que o usuário comeu '''
+''' Criando um dicionário com as informacões do que o usuário comeu '''
 
 dict_usuario = dict()
 lista_consumido = []
@@ -187,6 +186,8 @@ calorias_total7 = calorias_creme + calorias_macarrao + calorias_nhoque + caloria
 gordura_total7 = gordura_creme + gordura_macarrao + gordura_nhoque + gordura_milk
 #print(gordura_total7)
 
+
+#criando listas para serem usadas nos graficos
 caloria_total = [calorias_total6,calorias_total7]
 proteina_total = [proteina_total6,proteina_total7]
 carbo_total = [carbo_total6,carbo_total7]
@@ -194,7 +195,7 @@ gordura_total = [gordura_total6,gordura_total7]
 T = [6,7]
 import matplotlib.pyplot as plt
 
-def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):
+def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):    #grafico com dois eixos y sendo um deles a qtde necessaria de calorias e a qtde consumida de calorias
      if yy == 0:
         plt.plot(T, qtdecalorica)
         plt.plot(T, caloria_total)
@@ -208,7 +209,6 @@ def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):
         fig, ax1 = plt.subplots()
         ax1.plot(caloria_total, 'b.')
         ax1.set_xlabel('Tempo (dias)')
-        # Make the y-axis label and tick labels match the line color.
         ax1.set_ylabel('Calorias Ingeridas(kcal)', color='b')
         for tl in ax1.get_yticklabels():
             tl.set_color('b')
@@ -220,9 +220,9 @@ def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):
             tl.set_color('r')
         plt.show() 
         return None
-MostraGraficoCalorias(T,caloria_total,2833.416,1)
+MostraGraficoCalorias(T,caloria_total,2833.416,1)  #o grafico mostra alguns pontos que sao os que interessam
 
-def MostraGraficoProteina(T,proteina_total):
+def MostraGraficoProteina(T,proteina_total):   #grafico da qtde de proteina ingerida pelo tempo
     fig, ax1 = plt.subplots()
     ax1.plot(T, proteina_total, 'g.')
     ax1.set_xlabel('Tempo(dias)')
@@ -230,9 +230,9 @@ def MostraGraficoProteina(T,proteina_total):
     for tl in ax1.get_yticklabels():
         tl.set_color('g')
     plt.show()
-#MostraGraficoProteina(T,proteina_total)
+MostraGraficoProteina(T,proteina_total)
 
-def MostraGraficoCarbo(T,carbo_total):
+def MostraGraficoCarbo(T,carbo_total):   #qtde de carbo ingerido pelo tempo
     fig, ax1 = plt.subplots()
     ax1.plot(T, carbo_total, 'g.')
     ax1.set_xlabel('Tempo(dias)')
@@ -240,9 +240,9 @@ def MostraGraficoCarbo(T,carbo_total):
     for tl in ax1.get_yticklabels():
         tl.set_color('g')
     plt.show()
-#MostraGraficoCarbo(T,carbo_total)
+MostraGraficoCarbo(T,carbo_total)
 
-def MostraGraficoGordura(T,gordura_total):
+def MostraGraficoGordura(T,gordura_total):   #qtde de gordura ingerida pelo tempo
     fig, ax1 = plt.subplots()
     ax1.plot(T, gordura_total, 'g.')
     ax1.set_xlabel('Tempo(dias)')
@@ -250,7 +250,7 @@ def MostraGraficoGordura(T,gordura_total):
     for tl in ax1.get_yticklabels():
         tl.set_color('g')
     plt.show()
-#MostraGraficoGordura(T,gordura_total)
+MostraGraficoGordura(T,gordura_total)
     
 '''Calorias que devem ser ingeridas a mais nos dias'''
 #no dia 06/04/15
@@ -266,10 +266,16 @@ print('voce precisa consumir mais', calorias_a_mais7(calorias_total7),'kcal no s
 def IMC():
     return (1.3*70)/(1.64**2.5)
 print('o seu IMC e:',IMC(),'e portanto voce está obeso') #deu 26.4 e portanto a pessoa esta com sobrepeso
+  
+#a criação das funções acima são uma maneira alternativa de fazer com que apareça para a pessoa suas informações
+
+#outra maneira é criando um arquivo texto com tais informações como abaixo
+informacoes_usuario = open("arquivodieta.txt","w")
+escrever_informacoes = informacoes_usuario.writelines('O IMC do paciente é 26.419936666908008 e está acima do normal, por isso ele está obeso. No primeiro dia o paciente precisa consumir mais 2370.916 kcal e no segundo 1742.4160000000002 kcal')
+#só para deixar claro que sabemos que poderiam ser usadas as funções ao invés de escrever os números de calorias necessitadas e IMC, mas por preferência foram escritos os números manualmente
 
 
-
-
+#os prints que estao com # são os que foram utilizados só para confirmação de resultados
 
 
 
