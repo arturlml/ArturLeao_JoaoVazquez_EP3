@@ -9,11 +9,7 @@ def TMB():
 def qtdecalorica():  #quantidade energetica em kcal necessitada 
     return TMB()*1.725  #o numero que multiplica o tmb é 1.725 porque o nivel de atividade do usuario é alto
 print(qtdecalorica())  #só para saber qual a necessidade energetica, que é de 2833.416kcal
- 
-def IMC():
-    return (1.3*70)/(1.64**2.5)
-print(IMC()) #deu 26.4 e portanto a pessoa esta com sobrepeso
-       
+        
 
 ''' Criando um dicionário com as informaões do que o usuário comeu '''
 
@@ -202,7 +198,7 @@ def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):
      if yy == 0:
         plt.plot(T, qtdecalorica)
         plt.plot(T, caloria_total)
-        plt.axis([0, max(T), 0, 2000])
+        plt.axis([0,T(max), 0, 2000])
         plt.ylabel('Quantidade necessária')
         plt.xlabel('Tempo (dias)')
         plt.title('Calorias')
@@ -210,7 +206,7 @@ def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):
         return None
      else:
         fig, ax1 = plt.subplots()
-        ax1.plot(T, caloria_total, 'b.')
+        ax1.plot(caloria_total, 'b.')
         ax1.set_xlabel('Tempo (dias)')
         # Make the y-axis label and tick labels match the line color.
         ax1.set_ylabel('Calorias Ingeridas(kcal)', color='b')
@@ -218,13 +214,13 @@ def MostraGraficoCalorias(T,caloria_total,qtdecalorica,yy):
             tl.set_color('b')
         
         ax2 = ax1.twinx()
-        ax2.plot(T, qtdecalorica, 'r.')
+        ax2.plot(qtdecalorica, 'r.')
         ax2.set_ylabel('Quantidade necessária(kcal)', color='r')
         for tl in ax2.get_yticklabels():
             tl.set_color('r')
         plt.show() 
         return None
-#MostraGraficoCalorias(T,caloria_total,2833.416,1)
+MostraGraficoCalorias(T,caloria_total,2833.416,1)
 
 def MostraGraficoProteina(T,proteina_total):
     fig, ax1 = plt.subplots()
@@ -234,7 +230,7 @@ def MostraGraficoProteina(T,proteina_total):
     for tl in ax1.get_yticklabels():
         tl.set_color('g')
     plt.show()
-MostraGraficoProteina(T,proteina_total)
+#MostraGraficoProteina(T,proteina_total)
 
 def MostraGraficoCarbo(T,carbo_total):
     fig, ax1 = plt.subplots()
@@ -244,7 +240,7 @@ def MostraGraficoCarbo(T,carbo_total):
     for tl in ax1.get_yticklabels():
         tl.set_color('g')
     plt.show()
-MostraGraficoCarbo(T,carbo_total)
+#MostraGraficoCarbo(T,carbo_total)
 
 def MostraGraficoGordura(T,gordura_total):
     fig, ax1 = plt.subplots()
@@ -254,6 +250,26 @@ def MostraGraficoGordura(T,gordura_total):
     for tl in ax1.get_yticklabels():
         tl.set_color('g')
     plt.show()
-MostraGraficoGordura(T,gordura_total)
+#MostraGraficoGordura(T,gordura_total)
+    
+'''Calorias que devem ser ingeridas a mais nos dias'''
+#no dia 06/04/15
+def calorias_a_mais6(calorias_total6):
+    return 2833.416 - calorias_total6
+print('voce precisa consumir mais', calorias_a_mais6(calorias_total6),'kcal no primeiro dia')
+
+#no dia 07/04/15
+def calorias_a_mais7(calorias_total7):
+    return 2833.416 - calorias_total7
+print('voce precisa consumir mais', calorias_a_mais7(calorias_total7),'kcal no segundo dia')
+
+def IMC():
+    return (1.3*70)/(1.64**2.5)
+print('o seu IMC e:',IMC(),'e portanto voce está obeso') #deu 26.4 e portanto a pessoa esta com sobrepeso
+
+
+
+
+
 
 
